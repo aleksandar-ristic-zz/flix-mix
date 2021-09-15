@@ -1,5 +1,14 @@
-import './App.css'
+import Jumbotron from './components/jumbotron'
+import jumboData from './fixtures/jumbo'
 
 export default function App() {
-	return <p>Hello World !</p>
+	return (
+		<Jumbotron.Container>
+			{jumboData.map(item => (
+				<Jumbotron key={item.id} direction={item.direction}>
+					<p>Hello again!</p>
+				</Jumbotron>
+			))}
+		</Jumbotron.Container>
+	)
 }
