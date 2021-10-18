@@ -6,6 +6,7 @@ export const Container = styled.div`
 `
 
 export const Item = styled.div`
+	max-width: 670px;
 	margin-bottom: 0.625rem;
 	color: aliceblue;
 
@@ -15,14 +16,46 @@ export const Item = styled.div`
 `
 
 export const Header = styled.div`
+	margin-bottom: 1px;
+	padding: 0.8em 1.2em;
+	background: #303030;
+	font-size: 26px;
+	font-weight: normal;
+	cursor: pointer;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+	user-select: none;
+
+	img {
+		filter: brightness(0) invert(1);
+		width: 1.5rem;
+
+		@media (max-width: 600px) {
+			width: 1rem;
+		}
+	}
+
+	@media (max-width: 600px) {
+		font-size: 1rem;
+	}
 `
 
-export const Body = styled.div``
+export const Body = styled.div`
+	max-height: 1200px;
+	padding: 0.8em 2.2em 0.8em 1.2em;
+	background: #303030;
+	font-size: 26px;
+	font-weight: normal;
+	line-height: normal;
+	white-space: pre-wrap;
+	user-select: none;
+	transition: max-height 0.25s cubic-bezier(0.5, 0, 0.1, 1);
 
-export const Frame = styled.div`
-	margin-bottom: 2.5rem;
+	@media (max-width: 600px) {
+		font-size: 1rem;
+		line-height: 1.4;
+	}
 `
 
 export const Inner = styled.div`
