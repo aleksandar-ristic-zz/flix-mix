@@ -5,8 +5,18 @@ export const Container = styled.div`
 	display: flex;
 `
 
+export const Inner = styled.div`
+	max-width: 815px;
+	margin: auto;
+	padding: 70px 45px;
+	display: flex;
+	flex-direction: column;
+`
+
 export const Item = styled.div`
+	width: 100%;
 	max-width: 670px;
+	margin: auto;
 	margin-bottom: 0.625rem;
 	color: aliceblue;
 
@@ -56,14 +66,6 @@ export const Body = styled.div`
 		font-size: 1rem;
 		line-height: 1.4;
 	}
-`
-
-export const Inner = styled.div`
-	max-width: 815px;
-	margin: auto;
-	padding: 70px 45px;
-	display: flex;
-	flex-direction: column;
 `
 
 export const Title = styled.div`
