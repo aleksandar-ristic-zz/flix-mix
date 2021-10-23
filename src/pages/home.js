@@ -1,5 +1,5 @@
 import React from 'react'
-import { OptForm } from '../components'
+import { OptForm, Feature } from '../components'
 import {
 	HeaderContainer,
 	FaqContainer,
@@ -11,6 +11,14 @@ export default function Home() {
 	return (
 		<>
 			<HeaderContainer>
+				<Feature>
+					<Feature.Title>
+						Unlimited films, TV programmes and more.
+					</Feature.Title>
+					<Feature.Subtitle>
+						Watch anywhere. Cancel at anytime.
+					</Feature.Subtitle>
+				</Feature>
 				<OptForm>
 					<OptForm.Input placeholder='Email address' />
 					<OptForm.Button>Try it now</OptForm.Button>

@@ -15,7 +15,7 @@ export const Inner = styled.div`
 
 export const Item = styled.div`
 	width: 100%;
-	max-width: 670px;
+	max-width: 700px;
 	margin: auto;
 	margin-bottom: 0.625rem;
 	color: aliceblue;
