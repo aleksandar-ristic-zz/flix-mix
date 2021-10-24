@@ -38,7 +38,7 @@ export default function FooterContainer() {
 			</Footer.Row>
 			<Footer.Break />
 
-			<Footer.Text>Flix'n'Chill International Edition</Footer.Text>
+			<Footer.Text>FlixMix International Edition</Footer.Text>
 		</Footer>
 	)
 }

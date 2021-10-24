@@ -19,10 +19,6 @@ export const Item = styled.div`
 	margin: auto;
 	margin-bottom: 0.625rem;
 	color: aliceblue;
-
-	&:first-of-type {
-		margin-top: 3em;
-	}
 `
 
 export const Header = styled.div`
@@ -52,6 +48,7 @@ export const Header = styled.div`
 `
 
 export const Body = styled.div`
+	height: 100%;
 	max-height: 1200px;
 	padding: 0.8em 2.2em 0.8em 1.2em;
 	background: #303030;
@@ -60,17 +57,26 @@ export const Body = styled.div`
 	line-height: normal;
 	white-space: pre-wrap;
 	user-select: none;
-	transition: max-height 0.25s cubic-bezier(0.5, 0, 0.1, 1);
+	animation: appear 0.35s ease forwards;
 
 	@media (max-width: 600px) {
 		font-size: 1rem;
 		line-height: 1.4;
 	}
+
+	@keyframes appear {
+		from {
+			height: 0;
+		}
+		to {
+			height: 100%;
+		}
+	}
 `
 
 export const Title = styled.div`
 	margin-top: 0;
-	margin-bottom: 0.5rem;
+	margin-bottom: 3rem;
 	text-align: center;
 	font-size: 50px;
 	line-height: 1.1;

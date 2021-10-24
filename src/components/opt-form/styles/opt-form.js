@@ -62,7 +62,7 @@ export const Break = styled.div`
 export const Text = styled.p`
 	text-align: center;
 	font-size: 19.2px;
-	color: aliceblue;
+	color: hsl(208, 10%, 80%);
 
 	@media (max-width: 600px) {
 		font-size: 1rem;
