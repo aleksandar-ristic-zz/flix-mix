@@ -5,7 +5,7 @@ import {
 	FaqContainer,
 	JumbotronContainer,
 	FooterContainer
-} from '../src/containers'
+} from '../containers'
 
 export default function Home() {
 	return (
