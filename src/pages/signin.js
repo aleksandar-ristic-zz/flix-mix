@@ -21,7 +21,7 @@ export default function Signin() {
 
 		const auth = getAuth(firebase)
 
-		signInWithEmailAndPassword(auth, email, password)
+		return signInWithEmailAndPassword(auth, email, password)
 			.then(() => {
 				history.push(ROUTES.BROWSE)
 			})
@@ -57,6 +57,15 @@ export default function Signin() {
 							Sign In
 						</Form.Submit>
 					</Form.Base>
+
+					<Form.Text>
+						New to FlixMix?{' '}
+						<Form.Link to={ROUTES.SIGN_UP}>Sign up now.</Form.Link>
+					</Form.Text>
+					<Form.TextSmall>
+						This page is protected by Google reCAPTCHA to ensure you're not a
+						bot. Learn more. Google it.
+					</Form.TextSmall>
 				</Form>
 			</HeaderContainer>
 			<FooterContainer />

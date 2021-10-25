@@ -22,7 +22,7 @@ export default function Signup() {
 
 		const auth = getAuth(firebase)
 
-		createUserWithEmailAndPassword(auth, email, password)
+		return createUserWithEmailAndPassword(auth, email, password)
 			.then(() => {
 				history.push(ROUTES.BROWSE)
 			})
@@ -64,6 +64,15 @@ export default function Signup() {
 							Sign Up
 						</Form.Submit>
 					</Form.Base>
+
+					<Form.Text>
+						Already a user?{' '}
+						<Form.Link to={ROUTES.SIGN_IN}>Sign in now.</Form.Link>
+					</Form.Text>
+					<Form.TextSmall>
+						This page is protected by Google reCAPTCHA to ensure you're not a
+						bot. Learn more. Google it.
+					</Form.TextSmall>
 				</Form>
 			</HeaderContainer>
 			<FooterContainer />
