@@ -1,7 +1,11 @@
 import React, { useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { FirebaseContext } from '../context/firebase'
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import {
+	getAuth,
+	createUserWithEmailAndPassword,
+	updateProfile
+} from 'firebase/auth'
 import HeaderContainer from '../containers/header'
 import FooterContainer from '../containers/footer'
 import { Form } from '../components'
@@ -23,12 +27,18 @@ export default function Signup() {
 		const auth = getAuth(firebase)
 
 		return createUserWithEmailAndPassword(auth, email, password)
-			.then(() => {
-				history.push(ROUTES.BROWSE)
+			.then(res => {
+				updateProfile(res.currentUser, {
+					displayName: name,
+					photoURL: Math.floor(Math.random() * 5) + 1
+				}).then(() => {
+					history.push(ROUTES.BROWSE)
+				})
 			})
 			.catch(error => {
 				setEmail('')
 				setPassword('')
+				setName('')
 				setError(error.message)
 			})
 	}
