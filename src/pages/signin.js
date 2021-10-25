@@ -36,20 +36,20 @@ export default function Signin() {
 		<>
 			<HeaderContainer>
 				<Form>
-					<Form.Title>Sign In</Form.Title>
+					<Form.Title>Sign in and watch!</Form.Title>
 					{error && <Form.Error>{error}</Form.Error>}
 
 					<Form.Base onSubmit={handleSignin}>
 						<Form.Input
 							placeholder='Email'
 							value={email}
-							onChange={e => setEmail(e.target.value)}
+							onChange={({ target }) => setEmail(target.value)}
 							type='email'
 						/>
 						<Form.Input
 							placeholder='Password'
 							value={password}
-							onChange={e => setPassword(e.target.value)}
+							onChange={({ target }) => setPassword(target.value)}
 							type='password'
 							autoComplete='off'
 						/>
