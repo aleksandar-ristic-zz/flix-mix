@@ -5,7 +5,7 @@ import { collection, getDocs } from 'firebase/firestore'
 
 export default function useContent(target) {
 	const { firebase } = useContext(FirebaseContext)
-	const [content, setContent] = useState({})
+	const [content, setContent] = useState([])
 
 	useEffect(() => {
 		async function fetchContent() {
