@@ -1,12 +1,12 @@
 import React from 'react'
 import { useContent } from '../hooks'
+import selectionFilter from '../utils/selection-filter'
 
 export default function Browse() {
-	// TODO we need series and films
 	const { series } = useContent('series')
-	// TODO we need slides
+	const { films } = useContent('films')
 
-	// TODO pass it to the browse container
+	const slides = selectionFilter({ series, films })
 
-	return <h2 style={{ color: 'aliceblue' }}>Browse!</h2>
+	return <BrowseContainer slides={slides} />
 }
