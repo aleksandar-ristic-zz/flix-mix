@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getFirestore } from 'firebase/firestore'
+// import { getFirestore } from 'firebase/firestore'
 import 'firebase/auth'
 // import { seedDatabase } from '../seed'
 
