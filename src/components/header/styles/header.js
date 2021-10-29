@@ -206,8 +206,8 @@ export const Feature = styled(Container)`
 	}
 `
 
-export const FeatureCallOut = styled.h2`
-	color: white;
+export const FeatureTitle = styled.h2`
+	color: aliceblue;
 	font-size: 50px;
 	line-height: normal;
 	font-weight: bold;
@@ -216,7 +216,7 @@ export const FeatureCallOut = styled.h2`
 `
 
 export const Text = styled.p`
-	color: white;
+	color: hsl(208, 10%, 80%);
 	font-size: 22px;
 	line-height: normal;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);

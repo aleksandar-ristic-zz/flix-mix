@@ -10,9 +10,9 @@ export default function useAuthListener() {
 
 	useEffect(() => {
 		const listener = onAuthStateChanged(auth, authUser => {
-			const { email, displayName, photoURL } = authUser
-
 			if (authUser) {
+				const { email, displayName, photoURL } = authUser
+
 				localStorage.setItem(
 					'authUser',
 					JSON.stringify({
