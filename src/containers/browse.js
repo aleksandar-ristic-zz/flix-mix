@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Browse, Loading, Header } from '../components'
+import { Loading, Header } from '../components'
 import SelectProfileContainer from './profiles'
 import { useAuthListener, useSignOut } from '../hooks'
 import * as ROUTES from '../constants/routes'
@@ -7,20 +7,16 @@ import logo from '../logo.svg'
 
 export default function BrowseContainer({ slides }) {
 	const { user } = useAuthListener()
+	const { setClicked } = useSignOut(false)
 	const [profile, setProfile] = useState({})
 	const [loading, setLoading] = useState(true)
-	const [signout, setSignout] = useState(false)
+	const [searchTerm, setSearchTerm] = useState('')
+
 	useEffect(() => {
 		setTimeout(() => {
 			setLoading(false)
 		}, 3000)
 	}, [profile.displayName])
-
-	useEffect(() => {
-		if (signout) {
-			useSignOut()
-		}
-	}, [signout])
 
 	return profile.displayName ? (
 		<>
@@ -33,6 +29,10 @@ export default function BrowseContainer({ slides }) {
 						<Header.TextLink>Films</Header.TextLink>
 					</Header.Group>
 					<Header.Group>
+						<Header.Search
+							searchItem={searchTerm}
+							setSearchItem={setSearchTerm}
+						/>
 						<Header.Profile>
 							<Header.Picture src={user.photoURL} alt='user picture' />
 							<Header.Dropdown>
@@ -41,7 +41,7 @@ export default function BrowseContainer({ slides }) {
 									<Header.TextLink>{user.displayName}</Header.TextLink>
 								</Header.Group>
 								<Header.Group>
-									<Header.TextLink onClick={() => setSignout(true)}>
+									<Header.TextLink onClick={() => setClicked(true)}>
 										Sign Out
 									</Header.TextLink>
 								</Header.Group>
@@ -59,6 +59,7 @@ export default function BrowseContainer({ slides }) {
 						he projects in a futile attempt to feel like he's part of the world
 						around him.
 					</Header.Text>
+					<Header.CTA>Play</Header.CTA>
 				</Header.Feature>
 			</Header>
 		</>

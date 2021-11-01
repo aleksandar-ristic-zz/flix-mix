@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import {
 	Background,
@@ -12,7 +12,11 @@ import {
 	Text,
 	Group,
 	Picture,
-	Profile
+	Profile,
+	Search,
+	SearchIcon,
+	SearchInput,
+	CTA
 } from './styles/header'
 
 export default function Header({ bg = true, children, ...restProps }) {
@@ -65,4 +69,37 @@ Header.Logo = function HeaderLogo({ to, ...restProps }) {
 			<Logo {...restProps} />
 		</RouterLink>
 	)
+}
+
+Header.Search = function HeaderSearch({
+	searchTerm,
+	setSearchTerm,
+	...restProps
+}) {
+	const [searchActive, setSearchActive] = useState(false)
+
+	return (
+		<Search {...restProps}>
+			<SearchIcon
+				onClick={() => setSearchActive(searchActive => !searchActive)}
+			>
+				<img
+					src='/images/icons/search.png'
+					alt='search icon'
+					description='Search'
+				/>
+			</SearchIcon>
+			<SearchInput
+				value={searchTerm}
+				onChange={({ target }) => setSearchTerm(target.value)}
+				active={searchActive}
+				placeholder='Search films and series'
+				description='Just type name of your favourite film or series'
+			/>
+		</Search>
+	)
+}
+
+Header.CTA = function HeaderCTA({ children, ...restProps }) {
+	return <CTA {...restProps}>{children}</CTA>
 }

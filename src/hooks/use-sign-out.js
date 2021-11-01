@@ -1,22 +1,25 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { FirebaseContext } from '../context/firebase'
 import { getAuth, signOut } from 'firebase/auth'
 
 export default function useSignOut() {
+	const [clicked, setClicked] = useState(false)
 	const { firebase } = useContext(FirebaseContext)
 	const auth = getAuth(firebase)
 
 	useEffect(() => {
-		console.log('Signed Out')
-		const handler = signOut(auth)
-			.then(() => {
-				localStorage.removeItem('authUser')
-				return console.log('Success!')
-			})
-			.catch(error => {
-				return console.log(error.message)
-			})
+		if (clicked) {
+			const handler = signOut(auth)
+				.then(() => {
+					localStorage.removeItem('authUser')
+				})
+				.catch(error => {
+					console.log(error.message)
+				})
 
-		return () => handler
-	}, [])
+			return () => handler
+		}
+	}, [clicked])
+
+	return { setClicked }
 }
