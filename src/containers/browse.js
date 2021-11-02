@@ -30,8 +30,8 @@ export default function BrowseContainer({ slides }) {
 					</Header.Group>
 					<Header.Group>
 						<Header.Search
-							searchItem={searchTerm}
-							setSearchItem={setSearchTerm}
+							searchTerm={searchTerm}
+							setSearchTerm={setSearchTerm}
 						/>
 						<Header.Profile>
 							<Header.Picture src={user.photoURL} alt='user picture' />
