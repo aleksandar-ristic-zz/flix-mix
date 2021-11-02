@@ -5,9 +5,16 @@ import {
 	Title,
 	SubTitle,
 	Text,
+	Entities,
 	Meta,
+	Maturity,
+	Content,
 	Item,
-	Image
+	Image,
+	Feature,
+	FeatureTitle,
+	FeatureText,
+	FeatureClose
 } from './styles/card'
 
 export const FeatureContext = createContext()
@@ -41,6 +48,10 @@ Card.Text = function CardText({ children, ...restProps }) {
 	return <Text {...restProps}>{children}</Text>
 }
 
+Card.Entities = function CardEntities({ children, ...restProps }) {
+	return <Entities {...restProps}>{children}</Entities>
+}
+
 Card.Meta = function CardMeta({ children, ...restProps }) {
 	return <Meta {...restProps}>{children}</Meta>
 }
@@ -61,6 +72,6 @@ Card.Item = function CardItem({ item, children, ...restProps }) {
 	)
 }
 
-Card.Image = function CardImage({ children, ...restProps }) {
-	return <Image {...restProps}>{children}</Image>
+Card.Image = function CardImage({ ...restProps }) {
+	return <Image {...restProps} />
 }
