@@ -87,7 +87,7 @@ export const Item = styled.div`
 	cursor: pointer;
 	transition: transform 0.2s;
 	&:hover {
-		transform: scale(1.3);
+		transform: scale(1.15);
 		z-index: 99;
 	}
 	@media (min-width: 1200px) {
@@ -131,6 +131,7 @@ export const Feature = styled.div`
 	background-position-x: right;
 	background-repeat: no-repeat;
 	background-color: black;
+
 	@media (max-width: 1000px) {
 		height: auto;
 		background-size: auto;

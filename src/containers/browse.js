@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Loading, Header, Card } from '../components'
 import SelectProfileContainer from './profiles'
+import FooterContainer from './footer'
 import { useAuthListener, useSignOut } from '../hooks'
 import * as ROUTES from '../constants/routes'
 import logo from '../logo.svg'
@@ -86,7 +87,7 @@ export default function BrowseContainer({ slides }) {
 						<Card.Title>{slideItem.title}</Card.Title>
 						<Card.Entities>
 							{slideItem.data.map(item => (
-								<Card.Item key={item.docId} item={item}>
+								<Card.Item key={item.id} item={item}>
 									<Card.Image
 										src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`}
 									/>
@@ -97,15 +98,18 @@ export default function BrowseContainer({ slides }) {
 								</Card.Item>
 							))}
 						</Card.Entities>
-						{/* <Card.Feature category={category}>
+						<Card.Feature category={category}>
+							{/* 							
 							<Player>
 								<Player.Button />
 								<Player.Video src='/videos/bunny.mp4' />
-							</Player>
-						</Card.Feature> */}
+							</Player> */}
+						</Card.Feature>
 					</Card>
 				))}
 			</Card.Group>
+
+			<FooterContainer />
 		</>
 	) : (
 		<SelectProfileContainer user={user} setProfile={setProfile} />
