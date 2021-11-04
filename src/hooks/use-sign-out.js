@@ -9,17 +9,15 @@ export default function useSignOut() {
 
 	useEffect(() => {
 		if (clicked) {
-			const handler = signOut(auth)
+			signOut(auth)
 				.then(() => {
 					localStorage.removeItem('authUser')
 				})
 				.catch(error => {
 					console.log(error.message)
 				})
-
-			return () => handler
 		}
-	}, [clicked])
+	}, [auth, clicked])
 
 	return { setClicked }
 }

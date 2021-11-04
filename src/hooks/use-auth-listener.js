@@ -30,7 +30,7 @@ export default function useAuthListener() {
 		})
 
 		return () => listener()
-	}, [])
+	}, [auth])
 
 	return { user }
 }

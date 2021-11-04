@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Loading, Header, Card } from '../components'
+import { Loading, Header, Card, Player } from '../components'
 import SelectProfileContainer from './profiles'
 import FooterContainer from './footer'
 import { useAuthListener, useSignOut } from '../hooks'
@@ -26,9 +26,15 @@ export default function BrowseContainer({ slides }) {
 		setSlideRows(slides[category])
 	}, [slides, category])
 
+	const src = 'https://www.youtube.com/watch?v=q4RK3jY7AVk'
+
 	return profile.displayName ? (
 		<>
-			{loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody />}
+			{loading ? (
+				<Loading src={user ? user.photoURL : null} />
+			) : (
+				<Loading.ReleaseBody />
+			)}
 			<Header src='joker1'>
 				<Header.Frame>
 					<Header.Group>
@@ -99,11 +105,10 @@ export default function BrowseContainer({ slides }) {
 							))}
 						</Card.Entities>
 						<Card.Feature category={category}>
-							{/* 							
 							<Player>
 								<Player.Button />
-								<Player.Video src='/videos/bunny.mp4' />
-							</Player> */}
+								<Player.Video src={src.replace('watch?v=', 'embed/')} />
+							</Player>
 						</Card.Feature>
 					</Card>
 				))}
