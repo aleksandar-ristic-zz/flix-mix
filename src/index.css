@@ -23,3 +23,40 @@ code {
 		height: 30vh;
 	}
 }
+
+.bg-fade0 {
+	animation: fade0 2s;
+}
+.bg-fade1 {
+	animation: fade1 2s;
+}
+.bg-fade2 {
+	animation: fade2 2s;
+}
+
+@keyframes fade0 {
+	from {
+		opacity: 0.2;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fade1 {
+	from {
+		opacity: 0.2;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fade2 {
+	from {
+		opacity: 0.2;
+	}
+	to {
+		opacity: 1;
+	}
+}

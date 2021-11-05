@@ -9,6 +9,7 @@ import logo from '../logo.svg'
 export default function BrowseContainer({ slides }) {
 	const [profile, setProfile] = useState({})
 	const [loading, setLoading] = useState(true)
+	const [bg, setBg] = useState(2)
 	const [searchTerm, setSearchTerm] = useState('')
 	const [category, setCategory] = useState('series')
 	const [slideRows, setSlideRows] = useState([])
@@ -26,6 +27,12 @@ export default function BrowseContainer({ slides }) {
 		setSlideRows(slides[category])
 	}, [slides, category])
 
+	useEffect(() => {
+		setTimeout(() => {
+			bg === 2 ? setBg(0) : setBg(bg + 1)
+		}, 6000)
+	}, [bg])
+
 	const src = 'https://www.youtube.com/watch?v=q4RK3jY7AVk'
 
 	return profile.displayName ? (
@@ -35,7 +42,7 @@ export default function BrowseContainer({ slides }) {
 			) : (
 				<Loading.ReleaseBody />
 			)}
-			<Header src='joker1'>
+			<Header className={`bg-fade${bg}`} src={`joker${bg}`}>
 				<Header.Frame>
 					<Header.Group>
 						<Header.Logo to={ROUTES.HOME} src={logo} alt='FlixMix' />
