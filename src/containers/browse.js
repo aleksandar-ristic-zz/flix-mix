@@ -4,7 +4,10 @@ import SelectProfileContainer from './profiles'
 import FooterContainer from './footer'
 import { useAuthListener, useSignOut } from '../hooks'
 import * as ROUTES from '../constants/routes'
+
 import logo from '../logo.svg'
+import { AiOutlineLogout } from 'react-icons/ai'
+import { MdOutlinePlayCircleFilled } from 'react-icons/md'
 
 export default function BrowseContainer({ slides }) {
 	const [profile, setProfile] = useState({})
@@ -30,10 +33,8 @@ export default function BrowseContainer({ slides }) {
 	useEffect(() => {
 		setTimeout(() => {
 			bg === 2 ? setBg(0) : setBg(bg + 1)
-		}, 6000)
+		}, 30000)
 	}, [bg])
-
-	const src = 'https://www.youtube.com/watch?v=q4RK3jY7AVk'
 
 	return profile.displayName ? (
 		<>
@@ -73,7 +74,7 @@ export default function BrowseContainer({ slides }) {
 								</Header.Group>
 								<Header.Group>
 									<Header.TextLink onClick={() => setClicked(true)}>
-										Sign Out
+										<AiOutlineLogout /> Sign Out
 									</Header.TextLink>
 								</Header.Group>
 							</Header.Dropdown>
@@ -90,7 +91,9 @@ export default function BrowseContainer({ slides }) {
 						he projects in a futile attempt to feel like he's part of the world
 						around him.
 					</Header.Text>
-					<Header.CTA>Play</Header.CTA>
+					<Header.CTA>
+						<MdOutlinePlayCircleFilled /> Play
+					</Header.CTA>
 				</Header.Feature>
 			</Header>
 
@@ -114,7 +117,7 @@ export default function BrowseContainer({ slides }) {
 						<Card.Feature category={category}>
 							<Player>
 								<Player.Button />
-								<Player.Video src={src.replace('watch?v=', 'embed/')} />
+								<Player.Video />
 							</Player>
 						</Card.Feature>
 					</Card>

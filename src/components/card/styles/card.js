@@ -142,6 +142,7 @@ export const Feature = styled.div`
 		}
 		${FeatureText} {
 			font-size: 14px;
+			text-transform: capitalize;
 		}
 	}
 `

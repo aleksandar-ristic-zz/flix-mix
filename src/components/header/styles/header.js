@@ -45,6 +45,7 @@ export const Link = styled.p`
 	color: aliceblue;
 	font-weight: ${({ active }) => (active === 'true' ? '700' : '400')};
 	transition: font-weight 0.15s linear;
+	cursor: pointer;
 
 	&:hover {
 		font-weight: bold;
@@ -142,11 +143,11 @@ export const Picture = styled.button`
 export const Dropdown = styled.div`
 	display: none;
 	position: absolute;
-	background-color: black;
-	padding: 10px;
+	background-color: #111;
+	padding: 20px;
 	width: 100px;
 	top: 32px;
-	right: 10px;
+	right: 5px;
 
 	${Group}:last-of-type ${Link} {
 		cursor: pointer;
@@ -160,11 +161,34 @@ export const Dropdown = styled.div`
 		}
 
 		${Link} {
+			margin-top: 8px;
 			cursor: pointer;
+			display: flex;
+			align-items: center;
+
+			svg {
+				margin-right: 8px;
+				height: 1.5em;
+				width: 1.5em;
+				transition: width 0.3s ease;
+			}
+
+			&:hover {
+				svg {
+					width: 1.4em;
+				}
+			}
 		}
 
 		${Picture} {
 			cursor: default;
+			transition: transform 0.3s ease;
+		}
+
+		&:hover {
+			${Picture} {
+				transform: scale(0.9);
+			}
 		}
 	}
 
@@ -173,7 +197,7 @@ export const Dropdown = styled.div`
 	}
 
 	p {
-		font-size: 12px;
+		font-size: 14px;
 		margin-bottom: 0;
 		margin-top: 0;
 	}
@@ -192,6 +216,7 @@ export const Profile = styled.div`
 	&:hover > ${Dropdown} {
 		display: flex;
 		flex-direction: column;
+		justify-content: space-between;
 	}
 `
 
@@ -240,16 +265,24 @@ export const CTA = styled.button`
 	color: #222;
 	border-width: 0;
 	padding: 10px 20px;
+	margin-top: 10px;
 	border-radius: 5px;
 	max-width: 130px;
 	font-weight: bold;
 	font-size: 20px;
-	margin-top: 10px;
+	line-height: 1.4;
 	cursor: pointer;
 	transition: background-color 0.2s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
 	&:hover {
 		background-color: #e50914;
 		color: aliceblue;
+	}
+
+	svg {
+		margin-right: 5px;
 	}
 `
