@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react'
 import { Loading, Header, Card, Player } from '../components'
 import SelectProfileContainer from './profiles'
 import FooterContainer from './footer'
-import { useAuthListener, useSignOut } from '../hooks'
+import { useAuthListener, useSignOut, useCtaPlay } from '../hooks'
 import * as ROUTES from '../constants/routes'
+import Fuse from 'fuse.js'
 
 import logo from '../logo.svg'
 import { AiOutlineLogout } from 'react-icons/ai'
@@ -12,6 +13,7 @@ import { MdOutlinePlayCircleFilled } from 'react-icons/md'
 export default function BrowseContainer({ slides }) {
 	const [profile, setProfile] = useState({})
 	const [loading, setLoading] = useState(true)
+	const [pressedPlay, setPressedPlay] = useState(false)
 	const [bg, setBg] = useState(2)
 	const [searchTerm, setSearchTerm] = useState('')
 	const [category, setCategory] = useState('series')
@@ -19,6 +21,7 @@ export default function BrowseContainer({ slides }) {
 
 	const { user } = useAuthListener()
 	const { setClicked } = useSignOut(false)
+	const { ctaPlay } = useCtaPlay()
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -27,14 +30,32 @@ export default function BrowseContainer({ slides }) {
 	}, [profile.displayName])
 
 	useEffect(() => {
-		setSlideRows(slides[category])
-	}, [slides, category])
+		if (pressedPlay) {
+			setSlideRows(ctaPlay)
+		} else {
+			setSlideRows(slides[category])
+		}
+	}, [slides, category, searchTerm, pressedPlay, ctaPlay])
 
 	useEffect(() => {
 		setTimeout(() => {
 			bg === 2 ? setBg(0) : setBg(bg + 1)
 		}, 30000)
 	}, [bg])
+
+	useEffect(() => {
+		const fuse = new Fuse(slideRows, {
+			keys: ['data.description', 'data.title', 'data.genre']
+		})
+
+		const results = fuse.search(searchTerm).map(({ item }) => item)
+
+		if (slideRows.length > 0 && searchTerm.length > 3 && results.length > 0) {
+			setSlideRows(results)
+		} else {
+			setSlideRows(slides[category])
+		}
+	}, [searchTerm, slideRows])
 
 	return profile.displayName ? (
 		<>
@@ -91,7 +112,7 @@ export default function BrowseContainer({ slides }) {
 						he projects in a futile attempt to feel like he's part of the world
 						around him.
 					</Header.Text>
-					<Header.CTA>
+					<Header.CTA onClick={() => setPressedPlay(true)}>
 						<MdOutlinePlayCircleFilled /> Play
 					</Header.CTA>
 				</Header.Feature>

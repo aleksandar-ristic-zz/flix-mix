@@ -28,10 +28,10 @@ export const Inner = styled.div`
 
 export const Close = styled.button`
 	position: absolute;
-	right: 15px;
-	top: 15px;
-	width: 22px;
-	height: 22px;
+	right: 40px;
+	top: 20px;
+	width: 27px;
+	height: 27px;
 	opacity: 0.3;
 	background-color: transparent;
 	border: 0;
@@ -45,9 +45,9 @@ export const Close = styled.button`
 		left: 10px;
 		top: 0;
 		content: ' ';
-		height: 22px;
+		height: 27px;
 		width: 2px;
-		background-color: #333;
+		background-color: aliceblue;
 	}
 	&:before {
 		transform: rotate(45deg);

@@ -18,7 +18,7 @@ export default function useContent(target) {
 
 				setContent(allSnapshots)
 			} catch (error) {
-				console.log(error.message)
+				console.error(error.message)
 			}
 		}
 
