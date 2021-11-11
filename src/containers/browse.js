@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Loading, Header, Card, Player } from '../components'
 import SelectProfileContainer from './profiles'
 import FooterContainer from './footer'
-import { useAuthListener, useSignOut, useCtaPlay } from '../hooks'
+import { useAuthListener, useSignOut } from '../hooks'
 import * as ROUTES from '../constants/routes'
 import Fuse from 'fuse.js'
 
@@ -13,7 +13,6 @@ import { MdOutlinePlayCircleFilled } from 'react-icons/md'
 export default function BrowseContainer({ slides }) {
 	const [profile, setProfile] = useState({})
 	const [loading, setLoading] = useState(true)
-	const [pressedPlay, setPressedPlay] = useState(false)
 	const [bg, setBg] = useState(2)
 	const [searchTerm, setSearchTerm] = useState('')
 	const [category, setCategory] = useState('series')
@@ -21,7 +20,6 @@ export default function BrowseContainer({ slides }) {
 
 	const { user } = useAuthListener()
 	const { setClicked } = useSignOut(false)
-	const { ctaPlay } = useCtaPlay()
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -30,12 +28,8 @@ export default function BrowseContainer({ slides }) {
 	}, [profile.displayName])
 
 	useEffect(() => {
-		if (pressedPlay) {
-			setSlideRows(ctaPlay)
-		} else {
-			setSlideRows(slides[category])
-		}
-	}, [slides, category, searchTerm, pressedPlay, ctaPlay])
+		setSlideRows(slides[category])
+	}, [slides, category, searchTerm])
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -55,7 +49,7 @@ export default function BrowseContainer({ slides }) {
 		} else {
 			setSlideRows(slides[category])
 		}
-	}, [searchTerm, slideRows])
+	}, [searchTerm])
 
 	return profile.displayName ? (
 		<>
@@ -112,7 +106,7 @@ export default function BrowseContainer({ slides }) {
 						he projects in a futile attempt to feel like he's part of the world
 						around him.
 					</Header.Text>
-					<Header.CTA onClick={() => setPressedPlay(true)}>
+					<Header.CTA onClick={() => setCategory('featured')}>
 						<MdOutlinePlayCircleFilled /> Play
 					</Header.CTA>
 				</Header.Feature>
