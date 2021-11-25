@@ -55,3 +55,5 @@ Other than that it was an amazing ride.
 
 I am eternally grateful to Karl Hardwen, magnificent programmer and educator, for his youtube video which helped me a lot in times of crisis:
 [Netflix Clone Youtube Video](https://www.youtube.com/watch?v=x_EEwGe-a9o)
+
+![Screenshot](https://ibb.co/RYKfLpk)
